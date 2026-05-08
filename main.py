@@ -1,1 +1,30 @@
+#!/usr/bin/env pybricks-micropython
 
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import Motor, GyroSensor, ColorSensor, TouchSensor
+from pybricks.parameters import Port,Stop
+from pybricks.tools import wait
+from pybricks.robotics import DriveBase
+from pybricks.iodevices import I2CDevice
+from pybricks.parameters import Color
+
+
+# Initialize the EV3 Brick.
+ev3 = EV3Brick()
+
+# Initialize motors
+right_motor = Motor(Port.D)
+left_motor = Motor(Port.B)
+
+# Initialize sensors
+right_sensor = ColorSensor(Port.S1)
+left_sensor = ColorSensor(Port.S4)
+
+# Functions
+
+
+# At start
+ev3.speaker.set_volume(40); #ev3.speaker.beep(660,200)
+ev3.speaker.beep(440)
+
+# CODE BELOW
