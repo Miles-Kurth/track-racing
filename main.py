@@ -13,12 +13,19 @@ from pybricks.parameters import Color
 ev3 = EV3Brick()
 
 # Initialize motors
-right_motor = Motor(Port.D)
 left_motor = Motor(Port.B)
+right_motor = Motor(Port.D)
 
 # Initialize sensors
-right_sensor = ColorSensor(Port.S1)
 left_sensor = ColorSensor(Port.S4)
+right_sensor = ColorSensor(Port.S1)
+
+# Initialize drivebase
+robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+
+# Declare Variables
+speed_left = 0
+speed_right = 0
 
 # Functions
 
@@ -27,4 +34,13 @@ left_sensor = ColorSensor(Port.S4)
 ev3.speaker.set_volume(40); #ev3.speaker.beep(660,200)
 ev3.speaker.beep(440)
 
+
 # CODE BELOW
+
+vel_Left = 500
+vel_Right = 500
+
+while True:
+    left_motor.run(vel_Left)
+    right_motor.run(vel_Right)
+    #color > 10 or so
