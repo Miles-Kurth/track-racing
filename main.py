@@ -2,7 +2,7 @@
 
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, GyroSensor, ColorSensor, TouchSensor
-from pybricks.parameters import Port,Stop
+from pybricks.parameters import Port, Stop
 from pybricks.tools import wait
 from pybricks.robotics import DriveBase
 from pybricks.iodevices import I2CDevice
@@ -28,6 +28,10 @@ speed_left = 0
 speed_right = 0
 
 # Functions
+
+def set_speed(self, speed)
+    self.run(speed)
+Motor.set_speed = set_speed
 
 
 # At start
