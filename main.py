@@ -28,6 +28,7 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 vel_left = 0
 vel_right = 0
 
+
 # Functions
 
 def update_motors():
@@ -60,5 +61,10 @@ vel_right = 500
 while True:
     # left_motor.run(vel_Left)
     # right_motor.run(vel_Right)
+    # print(str(time.time()) + " " + str(left_sensor.reflection()))
     if left_check():
-        print(str(time.time()) + " " + str(left_sensor.reflection()))
+        vel_left += -50
+        update_motors()
+    if right_check():
+        vel_right += -50
+        update_motors()
