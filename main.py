@@ -25,10 +25,14 @@ right_sensor = ColorSensor(Port.S1)
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 
 # Declare Variables
-vel_reft = 0
+vel_left = 0
 vel_right = 0
 
 # Functions
+
+def update_motors():
+    left_motor.run(vel_left)
+    right_motor.run(vel_right)
 
 def left_check():
     if left_sensor.reflection() > 8:
@@ -50,7 +54,7 @@ ev3.speaker.beep(440)
 
 # CODE BELOW
 
-vel_reft = 500
+vel_left = 500
 vel_right = 500
 
 while True:
