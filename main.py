@@ -41,27 +41,13 @@ ev3.speaker.set_volume(40); #ev3.speaker.beep(660,200)
 ev3.speaker.beep(440)
 
 # Declare Variables
-BASE_SPEED = 800
-vel_left = 0
-vel_right = 0
+BASE_SPEED = 700
 target = 11 # light = ~24, black = 3
-error = 0
-last_error = 0
-integral = 0
-derivative = 0
-correction = 0
-kp = 13
-ki = 0.2
-kd = 1
+error = 0; last_error = 0; integral = 0; derivative = 0; correction = 0
+kp = 10; ki = 0.2; kd = 1
 
 
 # CODE BELOW
-
-vel_left = 0
-vel_right = 0
-
-# while True:
-#     print(str(center_sensor.reflection()))
 
 while True:
     value = center_sensor.reflection()
