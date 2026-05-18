@@ -141,4 +141,5 @@ while True:
     print("Total = " + str(vel_left + vel_right) + ",   ", end="") # total speed
     print("L = " + str(vel_left) + str(left_check()) + "  ", end="") # LEFT speed & [sees line?]
     print("R = " + str(vel_right) + str(right_check())) # RIGHT speed & [sees line?]
-    
+
+# do PID
