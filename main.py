@@ -26,12 +26,6 @@ center_sensor = ColorSensor(Port.S3)
 # Initialize drivebase
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 
-# Declare Variables
-BASE_SPEED = 300
-vel_left = 0
-vel_right = 0
-target = 30 # get correct number
-
 
 # Functions
 
@@ -111,13 +105,35 @@ def fix_vels():
 ev3.speaker.set_volume(40); #ev3.speaker.beep(660,200)
 ev3.speaker.beep(440)
 
+# Declare Variables
+BASE_SPEED = 300
+vel_left = 0
+vel_right = 0
+target = 30 # get correct number
+error = 0
+last_error = 0
+kp = 1
+ki = 1
+kd = 1
+
 
 # CODE BELOW
 
 vel_left = 0
 vel_right = 0
 
+while True:
+    print(str(center_sensor.reflection()))
 
+while True:
+    value = center_sensor.reflection()
+    error = (target - value) * kp
+    integral = (integral + error) * ki
+    derivative = (error - last_error) * kd
+    last_error = error
+    correction = error + integral + derivative
+    left_motor.run(BASE_SPEED - correction)
+    right_motor.run(BASE_SPEED + correction)
 
 
 
