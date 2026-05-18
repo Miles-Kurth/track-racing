@@ -27,10 +27,10 @@ center_sensor = ColorSensor(Port.S3)
 robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
 
 # Declare Variables
+BASE_SPEED = 300
 vel_left = 0
 vel_right = 0
-START_SPEED = 300
-last_side = "between" # left, right
+target = 30 # get correct number
 
 
 # Functions
@@ -46,12 +46,12 @@ def update_motors():
     update_right()
 
 def update_left():
-    global vel_left; global START_SPEED
-    left_motor.run(START_SPEED + vel_left)
+    global vel_left; global BASE_SPEED
+    left_motor.run(STARTBASE+ vel_left)
 
 def update_right():
-    global vel_right; global START_SPEED
-    right_motor.run(START_SPEED + vel_right)
+    global vel_right; global BASE_SPEED
+    right_motor.run(STARTBASE+ vel_right)
 
 
 def left_check():
@@ -59,7 +59,6 @@ def left_check():
     if left_sensor.reflection() > 8:
         return False
     else:
-        last_side = "left"
         return True
 
 def right_check():
@@ -67,7 +66,6 @@ def right_check():
     if right_sensor.reflection() > 8:
         return False
     else:
-        last_side = "right"
         return True
 
 def center_check():
@@ -121,25 +119,28 @@ vel_right = 0
 
 
 
-update_motors()
-while True:
-    if left_check(): # turn left
-        vel_right += 1
-        vel_left += -1
-        fix_vels()
-        update_motors()
+
+
+
+# update_motors()
+# while True:
+#     if left_check(): # turn left
+#         vel_right += 1
+#         vel_left += -1
+#         fix_vels()
+#         update_motors()
     
-    if right_check(): # turn right
-        vel_left += 1
-        vel_right += -1
-        fix_vels()
-        update_motors()
-    fix_deviation()
+#     if right_check(): # turn right
+#         vel_left += 1
+#         vel_right += -1
+#         fix_vels()
+#         update_motors()
+#     fix_deviation()
 
 
-    # print info
-    print("Total = " + str(vel_left + vel_right) + ",   ", end="") # total speed
-    print("L = " + str(vel_left) + str(left_check()) + "  ", end="") # LEFT speed & [sees line?]
-    print("R = " + str(vel_right) + str(right_check())) # RIGHT speed & [sees line?]
+#     # print info
+#     print("Total = " + str(vel_left + vel_right) + ",   ", end="") # total speed
+#     print("L = " + str(vel_left) + str(left_check()) + "  ", end="") # LEFT speed & [sees line?]
+#     print("R = " + str(vel_right) + str(right_check())) # RIGHT speed & [sees line?]
 
 # do PID
